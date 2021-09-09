@@ -14,7 +14,7 @@ A place to show where all of your liked content was liked, with all liked conten
 
 Heroku deployment:
 
-Github repository:
+Github repository: https://github.com/Vandy-P3/U-Hub/
 
 ## Usage
 
