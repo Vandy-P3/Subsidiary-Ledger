@@ -1,8 +1,9 @@
-# U-Hub
+# Fixed Asset Sub-Ledger
 
 ## Description
 
-A place to show where all of your liked content was liked, with all liked content in a single place.
+Fixed Assets Subsidiary Ledger is used to manage purchase, sale, allocation, and retirement of fixed assets. This particular ledger is used to
+keep track of monthly depreciation of a small businesses fixed assets.
 
 ## Table of Contents
 
@@ -14,7 +15,7 @@ A place to show where all of your liked content was liked, with all liked conten
 
 Heroku deployment:
 
-Github repository: https://github.com/Vandy-P3/U-Hub/
+Github repository: https://github.com/Vandy-P3/subsidiary-ledger/
 
 ## Usage
 
