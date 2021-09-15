@@ -32,7 +32,7 @@ const assetSchema = new Schema(
             virtuals: true,
             getters: true
         }
-    }    
+    }
 )
 
 
