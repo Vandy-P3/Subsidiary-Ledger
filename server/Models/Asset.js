@@ -28,6 +28,11 @@ const assetSchema = new Schema(
             required: true,
             enum: ['Straight Line'],
             default: 'Straight Line'
+        },
+        userId: {
+            type: String,
+            required: true,
+            trim: true
         }
     },
     {

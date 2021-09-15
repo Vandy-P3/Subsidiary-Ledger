@@ -18,9 +18,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/googlebooks',
+        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/Subsidiary-Ledger',
     })
-
 }))
 
 // if we're in production, serve client/build as static assets

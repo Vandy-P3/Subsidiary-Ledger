@@ -1,69 +1,49 @@
 const { User } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const userController = {
-    createUser({ body }, res) {
-        User.create(body)
-            .then(dbUserData => res.json(dbUserData))
-            .catch(err => res.status(400).json(err));
-    },
+     // get a single user by either their id or their username
+  async getSingleUser({ user = null, session }, res) {
+    const foundUser = await User.findOne({ _id: user ? user._id : session.id });
 
-    getAllUsers(req, res) {
-        User.find({})
-            .populate({
-                path: 'assets',
-                select: '-__v'
-            })
-            .select('-__v')
-            .then(dbUserData => res.json(dbUserData))
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            })
-    },
+    if (!foundUser) {
+      return res.status(400).json({ message: 'Cannot find a user with this id!' });
+    }
 
-    getUserById({ params }, res) {
-        User.findOne({_id: params.id })
-            .populate({
-                path: 'assets',
-                select: '-__v'
-            })
-            .select('-__v')
-            .then(dbUserData => {
-                if(!dbUserData) {
-                    res.status(400).json({ message: 'No user found' })
-                    return;
-                }
-                res.json(dbUserData)
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err)
-            })
-    },
+    res.json(foundUser);
+  },
 
-    updateUser({ params, body}, res) {
-        User.findOneAndUpdate({_id: params.id}, body, {new: true, runValidators: true})
-            .then(dbUserData => {
-                if(!dbUserData) {
-                    res.status(400).json({ message: 'No user found'});
-                    return;
-                }
-                res.json(dbUserData)
-            })
-            .catch(err => res.json(err))
-    },
+  // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
+  async createUser({ body }, res) {
+    const user = await User.create(body);
 
-    deleteUser({ params }, res) {
-        User.findOneAndDelete({_id: params.id })
-            .then(dbUserData => {
-                if(!dbUserData) {
-                    res.status(400).json({ message: 'No user found'})
-                    return;
-                }
-                res.json(dbUserData);
-            })
-            .catch(err => res.status(400).json(err));
-    },
+    if (!user) {
+      return res.status(400).json({ message: 'Something is wrong!' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
+  },
+
+  async login({ body, session }, res) {
+    const user = await User.findOne({  email: body.email });
+    if (!user) {
+      return res.status(400).json({ message: "Can't find this user" });
+    }
+
+    const correctPw = await user.isCorrectPassword(body.password);
+
+    if (!correctPw) {
+      return res.status(400).json({ message: 'Wrong password!' });
+    }
+    const token = signToken(user);
+    session.save(() => {
+        session.userId = user._id;
+        session.userEmail = user.email;
+        
+        res.json({ token, user });
+    })
+    
+  }
 };
 
 module.exports = userController
