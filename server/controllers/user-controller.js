@@ -9,10 +9,10 @@ const userController = {
 
     getAllUsers(req, res) {
         User.find({})
-            // .populate({
-            //     path: 'assets',
-            //     select: '-__v'
-            // })
+            .populate({
+                path: 'assets',
+                select: '-__v'
+            })
             .select('-__v')
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {

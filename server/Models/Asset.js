@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const depExpCalc = require('../utils/depreciationCalc');
+const accDep = require('../utils/accDepCalc');
+
 
 const assetSchema = new Schema(
     {
@@ -18,7 +21,7 @@ const assetSchema = new Schema(
         usefulLife: {
             type: Number,
             required: true,
-            enum: [3,5]
+            trim: true
         },
         depreciationMethod: {
             type: String,
@@ -34,6 +37,14 @@ const assetSchema = new Schema(
         }
     }
 )
+
+assetSchema.virtual('monthlyDepreciationExpense').get(function() {
+    return depExpCalc(this.usefulLife, this.depreciationMethod, this.bookValue);
+});
+
+assetSchema.virtual('accumulatedDepreciation').get(function() {
+    return accDep(this.monthPurchased, this.usefulLife, this.depreciationMethod, this.bookValue);
+});
 
 
 const Asset = mongoose.model('Asset', assetSchema);
