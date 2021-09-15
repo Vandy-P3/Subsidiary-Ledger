@@ -1,8 +1,7 @@
 const depExpCalc = (usefulLife, method, bookValue) => {
     switch(method) {
         case 'Straight Line': 
-            straightLineDep(usefulLife, bookValue);
-            break;  
+            return straightLineDep(usefulLife, bookValue); 
     }
 }
 
@@ -11,7 +10,7 @@ const straightLineDep = (usefulLife, bookValue) => {
 
     const monthlyDep = yearlyDep / 12;
 
-    return monthlyDep;
+    return Math.round(monthlyDep);
 }
 
 module.exports = depExpCalc;
