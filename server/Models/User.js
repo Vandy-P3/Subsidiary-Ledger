@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const assetSchema = require('./Asset')
 
 const userSchema = new Schema({
   firstName: {
@@ -24,10 +25,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  assets: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Asset'
-}],
+  assets: [assetSchema],
 });
 
 // set up pre-save middleware to create password

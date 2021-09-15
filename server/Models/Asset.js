@@ -6,7 +6,7 @@ const accDep = require('../utils/accDepCalc');
 
 const assetSchema = new Schema(
     {
-        description: {
+        name: {
             type: String,
             required: true
         },
@@ -28,11 +28,6 @@ const assetSchema = new Schema(
             required: true,
             enum: ['Straight Line'],
             default: 'Straight Line'
-        },
-        userId: {
-            type: String,
-            required: true,
-            trim: true
         }
     },
     {
@@ -53,6 +48,4 @@ assetSchema.virtual('accumulatedDepreciation').get(function() {
 });
 
 
-const Asset = mongoose.model('Asset', assetSchema);
-
-module.exports = Asset;
+module.exports = assetSchema;
