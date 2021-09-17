@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./components/login/login.component";
 import SignUp from "./components/signup/signup.component";
-import Home from './components/Home';
+import BasicTable from "./components/BasicTable";
+
+
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={"/sign-in"}>
+            <Link className="navbar-brand" to={"/"}>
               Depreciation Ledger
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -36,7 +38,7 @@ function App() {
         <div className="outer">
           <div className="inner">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={BasicTable} />
               <Route path="/sign-in" component={Login} />
               <Route path="/sign-up" component={SignUp} />
             </Switch>
