@@ -17,7 +17,7 @@ export const BasicTable = () => {
     tableInstance;
 
   return (
-    <table {...getTableProps()}>
+    <table className="tables" {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
