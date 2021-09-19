@@ -49,9 +49,12 @@ const LoginForm = () => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        <h3>Log in</h3>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
+
+
         <Form.Group>
           <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
@@ -80,44 +83,14 @@ const LoginForm = () => {
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type='submit'
-          variant='success'>
+          variant='success'
+          className='btn-dark btn-lg btn-block'>
           Submit
         </Button>
       </Form>
     </>
   );
-  
-  
-  
-  // render() {
-  //   return (
-  //     <form>
-  //       <h3>Log in</h3>
 
-  //       <div className="form-group">
-  //         <label>Email</label>
-  //         <input
-  //           type="email"
-  //           className="form-control"
-  //           placeholder="Enter email"
-  //         />
-  //       </div>
-
-  //       <div className="form-group">
-  //         <label>Password</label>
-  //         <input
-  //           type="password"
-  //           className="form-control"
-  //           placeholder="Enter password"
-  //         />
-  //       </div>
-
-  //       <button type="submit" className="btn btn-dark btn-lg btn-block">
-  //         Sign in
-  //       </button>
-  //     </form>
-  //   );
-  // }
 }
 
 export default LoginForm;

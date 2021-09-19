@@ -6,7 +6,7 @@ export const getMe = (token) => {
         authorization: `Bearer ${token}`,
       },
     });
-  };
+};
   
 export const createUser = (userData) => {
     return fetch('/api/users', {
@@ -41,7 +41,7 @@ export const addAsset = (assetData, token) => {
 };
 
 // remove asset data
-export const deleteBook = (assetId, token) => {
+export const deleteAsset = (assetId, token) => {
     return fetch(`/api/users/assets/${assetId}`, {
         method: 'DELETE',
         headers: {
