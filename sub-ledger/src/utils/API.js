@@ -28,7 +28,7 @@ export const loginUser = (userData) => {
     });
 };
 
-// save book data for a logged in user
+// save asset data
 export const addAsset = (assetData, token) => {
     return fetch('/api/users', {
         method: 'PUT',
@@ -40,7 +40,7 @@ export const addAsset = (assetData, token) => {
     });
 };
 
-// remove saved book data for a logged in user
+// remove asset data
 export const deleteBook = (assetId, token) => {
     return fetch(`/api/users/assets/${assetId}`, {
         method: 'DELETE',
