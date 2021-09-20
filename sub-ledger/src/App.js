@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login/login.component";
 import SignUp from "./components/signup/signup.component";
 import HomePage from "./components/homePage/homePage.component";
+import assetForm from "./components/assetForm/assetForm.component";
 
 
 
@@ -30,6 +31,11 @@ function App() {
                     Sign up
                   </Link>
                 </li>
+                <li>
+                  <Link className='nav-link' to={'/addAsset'}>
+                    add Asset
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -41,6 +47,7 @@ function App() {
               <Route exact path="/" component={HomePage} />
               <Route path="/sign-in" component={Login} />
               <Route path="/sign-up" component={SignUp} />
+              <Route path='/addAsset' component={assetForm} />
             </Switch>
           </div>
         </div>
