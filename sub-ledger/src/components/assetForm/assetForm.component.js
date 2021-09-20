@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { Form, Button, Alert} from 'react-bootstrap';
 import { addAsset } from '../../utils/API';
+// import {saveAsset} from '../../utils/localStorage'
+// import Auth from '../../utils/auth'
 
 
 function AssetForm() {
-    const [assetFormData, setAssetFormData] = useState({ name: '', bookValue: 0, monthPurchased: '', usefulLife: 0 });
+    const [assetFormData, setAssetFormData] = useState({ name: '', bookValue: '', monthPurchased: '', usefulLife: '' });
     const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
   
+
+
     const handleInputChange = (event) => {
       const { name, value } = event.target;
       setAssetFormData({ ...assetFormData, [name]: value });
@@ -28,13 +32,13 @@ function AssetForm() {
         
         console.log(response);
 
-        
+
         if (!response.ok) {
           throw new Error('something went wrong!');
         }
   
-        const { asset } = await response.json();
-        console.log(asset);
+        const { user } = await response.json();
+        console.log(user);
 
       } catch (err) {
         console.error(err);
