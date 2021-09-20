@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button, Alert} from 'react-bootstrap';
 import { addAsset } from '../../utils/API';
-// import {saveAsset} from '../../utils/localStorage'
-// import Auth from '../../utils/auth'
+import {saveAssetIds, getSavedAssetIds} from '../../utils/localStorage'
+import Auth from '../../utils/auth'
 
 
 function AssetForm() {
     const [assetFormData, setAssetFormData] = useState({ name: '', bookValue: '', monthPurchased: '', usefulLife: '' });
     const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [savedAssetIds, setSavedAssetIds] = useState(getSavedAssetIds());
   
-
+    useEffect(() => {
+        return () => saveAssetIds(savedAssetIds)
+    })
 
     const handleInputChange = (event) => {
       const { name, value } = event.target;
@@ -27,24 +30,8 @@ function AssetForm() {
         event.stopPropagation();
       }
   
-      try {
-        const response = await addAsset(assetFormData);
-        
-        console.log(response);
+      await handleSaveAsset(assetFormData);
 
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-  
-        const { user } = await response.json();
-        console.log(user);
-
-      } catch (err) {
-        console.error(err);
-        setShowAlert(true);
-      }
-  
       setAssetFormData({
         name: '', 
         bookValue: '', 
@@ -53,7 +40,30 @@ function AssetForm() {
       });
     };
     
+    const handleSaveAsset = async (asset) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if(!token) {
+            return false;
+        }
+
+        try {
+            
+            const response = await addAsset(assetFormData, token);
+            const {assets} = await response.json();
+            
+        
+            if (!response.ok) {
+              throw new Error('something went wrong!');
+            }
+
+            setSavedAssetIds([...savedAssetIds, assets[assets.length - 1]._id])
     
+        } catch (err) {
+            console.error(err);
+            setShowAlert(true);
+        }
+    }
     return (
         <>
             <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
