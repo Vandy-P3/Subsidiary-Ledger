@@ -3,10 +3,10 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Auth from './utils/auth';
-import Login from "./components/login/login.component";
-import SignUp from "./components/signup/signup.component";
-import HomePage from "./components/homePage/homePage.component";
-import AssetForm from "./components/assetForm/assetForm.component";
+import Login from "./components/Login/Login";
+import SignUp from "./components/Signup/Signup";
+import HomePage from "./components/HomePage/HomePage";
+import AssetForm from "./components/AssetForm/AssetForm";
 
 
 
