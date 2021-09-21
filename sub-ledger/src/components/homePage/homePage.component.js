@@ -1,21 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
-import {getMe, deleteAsset} from '../../utils/API'
-import Auth from '../../utils/auth';
-import {removeAssetId} from '../../utils/localStorage';
+import { getMe, deleteAsset } from "../../utils/API";
+import Auth from "../../utils/auth";
+import { removeAssetId } from "../../utils/localStorage";
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import '../../components/table.css';
-
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import "../../components/table.css";
 
 export default function BasicTable() {
-  
   const [userData, setUserData] = useState({});
 
   const userDataLength = Object.keys(userData).length;
@@ -32,7 +30,7 @@ export default function BasicTable() {
         const response = await getMe(token);
 
         if (!response.ok) {
-          throw new Error('something went wrong!');
+          throw new Error("something went wrong!");
         }
 
         const user = await response.json();
@@ -43,15 +41,8 @@ export default function BasicTable() {
     };
 
     getUserData();
-  }, [userDataLength])
-  
-  
-  
-  
-  
-  
-  
-  
+  }, [userDataLength]);
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -66,24 +57,33 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {userData.assets ? (
-            userData.assets.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.bookValue}</TableCell>
-                <TableCell align="right">{row.monthPurchased}</TableCell>
-                <TableCell align="right">{row.usefulLife}</TableCell>
-                <TableCell align="right">{row.monthlyDepreciationExpense}</TableCell>
-                <TableCell align="right">{row.accumulatedDepreciation}</TableCell>
-              </TableRow>
-            ))
-            ) : null
-          }
+          {userData.assets
+            ? userData.assets.map((row) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right" class="border">
+                    {row.bookValue}
+                  </TableCell>
+                  <TableCell align="right" class="border">
+                    {row.monthPurchased}
+                  </TableCell>
+                  <TableCell align="right" class="border">
+                    {row.usefulLife}
+                  </TableCell>
+                  <TableCell align="right" class="border">
+                    {row.monthlyDepreciationExpense}
+                  </TableCell>
+                  <TableCell align="right" class="border">
+                    {row.accumulatedDepreciation}
+                  </TableCell>
+                </TableRow>
+              ))
+            : null}
         </TableBody>
       </Table>
     </TableContainer>
