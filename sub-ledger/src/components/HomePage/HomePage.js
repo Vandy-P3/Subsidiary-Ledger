@@ -35,6 +35,7 @@ export default function BasicTable() {
         }
 
         const user = await response.json();
+        console.log(user)
         setUserData(user);
       } catch (err) {
         console.error(err);
