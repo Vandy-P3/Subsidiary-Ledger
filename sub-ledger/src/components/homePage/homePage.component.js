@@ -13,6 +13,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import '../../components/table.css';
 import { border } from '@mui/system';
+import moment from 'moment'
 
 export default function BasicTable() {
   
@@ -76,7 +77,7 @@ export default function BasicTable() {
                   {row.name}
                 </TableCell>
                 <TableCell sx={{ border: 1 }} align="right">${row.bookValue}</TableCell>
-                <TableCell align="right">{row.monthPurchased}</TableCell>
+                <TableCell align="right">{moment(row.monthPurchased).format("MM/DD/YYYY")}</TableCell>
                 <TableCell align="right">{row.usefulLife}</TableCell>
                 <TableCell align="right">${row.monthlyDepreciationExpense}</TableCell>
                 <TableCell align="right">${row.accumulatedDepreciation}</TableCell>
