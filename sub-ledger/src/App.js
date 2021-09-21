@@ -2,14 +2,16 @@ import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import Auth from './utils/auth';
 import Login from "./components/login/login.component";
 import SignUp from "./components/signup/signup.component";
 import HomePage from "./components/homePage/homePage.component";
+import AssetForm from "./components/assetForm/assetForm.component";
 
 
 
 function App() {
+ 
   return (
     <Router>
       <div className="App">
@@ -20,16 +22,33 @@ function App() {
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/sign-in"}>
-                    Sign in
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/sign-up"}>
-                    Sign up
-                  </Link>
-                </li>
+                {Auth.loggedIn() ? (
+                  <>
+                    <li>
+                      <Link className='nav-link' to={'/addAsset'}>
+                        Add Asset
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className='nav-link' onClick={Auth.logout}>
+                        Logout
+                      </Link>
+                    </li>
+                  </>
+                  ) : (
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to={"/sign-in"}>
+                        Sign in
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to={"/sign-up"}>
+                        Sign up
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
@@ -41,6 +60,7 @@ function App() {
               <Route exact path="/" component={HomePage} />
               <Route path="/sign-in" component={Login} />
               <Route path="/sign-up" component={SignUp} />
+              <Route path='/addAsset' component={AssetForm} />
             </Switch>
           </div>
         </div>

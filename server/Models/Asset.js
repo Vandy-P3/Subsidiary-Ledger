@@ -22,12 +22,6 @@ const assetSchema = new Schema(
             type: Number,
             required: true,
             trim: true
-        },
-        depreciationMethod: {
-            type: String,
-            required: true,
-            enum: ['Straight Line'],
-            default: 'Straight Line'
         }
     },
     {
@@ -40,11 +34,11 @@ const assetSchema = new Schema(
 )
 
 assetSchema.virtual('monthlyDepreciationExpense').get(function() {
-    return depExpCalc(this.usefulLife, this.depreciationMethod, this.bookValue);
+    return depExpCalc(this.usefulLife, this.bookValue);
 });
 
 assetSchema.virtual('accumulatedDepreciation').get(function() {
-    return accDep(this.monthPurchased, this.usefulLife, this.depreciationMethod, this.bookValue);
+    return accDep(this.monthPurchased, this.usefulLife,  this.bookValue);
 });
 
 
