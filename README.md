@@ -27,3 +27,7 @@ Github repository: https://github.com/Vandy-P3/subsidiary-ledger/
 - Alex Elliott
 
 ## Screenshot
+
+<Link to={"/HomePage"}>
+          <button className="btn-dark btn-lg btn-block">Submit</button>
+        </Link>

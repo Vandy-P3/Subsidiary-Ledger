@@ -2,16 +2,13 @@ import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Auth from './utils/auth';
+import Auth from "./utils/auth";
 import Login from "./components/Login/Login";
 import SignUp from "./components/Signup/Signup";
 import HomePage from "./components/HomePage/HomePage";
 import AssetForm from "./components/AssetForm/AssetForm";
 
-
-
 function App() {
- 
   return (
     <Router>
       <div className="App">
@@ -25,17 +22,17 @@ function App() {
                 {Auth.loggedIn() ? (
                   <>
                     <li>
-                      <Link className='nav-link' to={'/addAsset'}>
+                      <Link className="nav-link" to={"/addAsset"}>
                         Add Asset
                       </Link>
                     </li>
                     <li>
-                      <Link className='nav-link' onClick={Auth.logout}>
+                      <Link className="nav-link" onClick={Auth.logout}>
                         Logout
                       </Link>
                     </li>
                   </>
-                  ) : (
+                ) : (
                   <>
                     <li className="nav-item">
                       <Link className="nav-link" to={"/sign-in"}>
@@ -60,7 +57,7 @@ function App() {
               <Route exact path="/" component={HomePage} />
               <Route path="/sign-in" component={Login} />
               <Route path="/sign-up" component={SignUp} />
-              <Route path='/addAsset' component={AssetForm} />
+              <Route path="/addAsset" component={AssetForm} />
             </Switch>
           </div>
         </div>
