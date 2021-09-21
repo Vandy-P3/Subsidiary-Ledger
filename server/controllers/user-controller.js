@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User } = require('../Models');
 const { signToken } = require('../utils/auth');
 
 const userController = {
