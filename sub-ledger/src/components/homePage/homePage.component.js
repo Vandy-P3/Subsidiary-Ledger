@@ -53,7 +53,7 @@ export default function BasicTable() {
   
   
   return (
-    <TableContainer component={Paper}>
+    <TableContainer sx={{ width: "90%", margin: "0 auto" }} component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -75,11 +75,11 @@ export default function BasicTable() {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="right">{row.bookValue}</TableCell>
+                <TableCell align="right">${row.bookValue}</TableCell>
                 <TableCell align="right">{row.monthPurchased}</TableCell>
                 <TableCell align="right">{row.usefulLife}</TableCell>
-                <TableCell align="right">{row.monthlyDepreciationExpense}</TableCell>
-                <TableCell align="right">{row.accumulatedDepreciation}</TableCell>
+                <TableCell align="right">${row.monthlyDepreciationExpense}</TableCell>
+                <TableCell align="right">${row.accumulatedDepreciation}</TableCell>
               </TableRow>
             ))
             ) : null
