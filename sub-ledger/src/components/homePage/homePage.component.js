@@ -44,7 +44,7 @@ export default function BasicTable() {
   }, [userDataLength]);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer sx={{ width: "90%", margin: "0 auto" }} component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

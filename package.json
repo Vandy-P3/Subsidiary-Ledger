@@ -22,6 +22,8 @@
   "homepage": "https://github.com/Vandy-P3/Subsidiary-Ledger#readme",
   "dependencies": {
     "concurrently": "^6.2.1",
-    "nodemon": "^2.0.12"
+    "moment": "^2.29.1",
+    "nodemon": "^2.0.12",
+    "react-moment": "^1.1.1"
   }
 }
