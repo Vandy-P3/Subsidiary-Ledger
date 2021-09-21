@@ -24,6 +24,7 @@ export default function BasicTable() {
       try {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+        
         if (!token) {
           return false;
         }
@@ -35,7 +36,7 @@ export default function BasicTable() {
         }
 
         const user = await response.json();
-        console.log(user)
+
         setUserData(user);
       } catch (err) {
         console.error(err);
