@@ -7,6 +7,7 @@ import Login from "./components/Login/Login.js";
 import SignUp from "./components/Signup/Signup.js";
 import HomePage from "./components/HomePage/HomePage.js";
 import AssetForm from "./components/AssetForm/AssetForm.js";
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
@@ -21,6 +22,11 @@ function App() {
             <ul className="navbar-nav ml-auto">
               {Auth.loggedIn() ? (
                 <>
+                  <li>
+                    <Link className="nav-link" to={"/dashboard"}>
+                      Dashboard
+                    </Link>
+                  </li>
                   <li>
                     <Link className="nav-link" to={"/addAsset"}>
                       Add Asset
@@ -57,6 +63,7 @@ function App() {
               <Route path="/sign-in" component={Login} />
               <Route path="/sign-up" component={SignUp} />
               <Route path="/addAsset" component={AssetForm} />
+              <Route path='/dashboard' component={Dashboard} />
             </Switch>
           </div>
         </div>
