@@ -12,7 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import '../../components/table.css';
-
+import { border } from '@mui/system';
 
 export default function BasicTable() {
   
@@ -75,7 +75,7 @@ export default function BasicTable() {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="right">${row.bookValue}</TableCell>
+                <TableCell sx={{ border: 1 }} align="right">${row.bookValue}</TableCell>
                 <TableCell align="right">{row.monthPurchased}</TableCell>
                 <TableCell align="right">{row.usefulLife}</TableCell>
                 <TableCell align="right">${row.monthlyDepreciationExpense}</TableCell>
