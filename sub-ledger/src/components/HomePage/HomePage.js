@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { getMe, deleteAsset } from "../../utils/API";
 import Auth from "../../utils/auth";
 import { removeAssetId } from "../../utils/localStorage";
-
+import formatDate from "../../utils/formatDate";
+import {formatPositive, formatNegative} from '../../utils/formatMoney'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -70,19 +71,19 @@ export default function BasicTable() {
                     {row.name}
                   </TableCell>
                   <TableCell align="right" className="border">
-                    {row.bookValue}
+                    {formatPositive(row.bookValue)}
                   </TableCell>
                   <TableCell align="right" className="border">
-                    {row.monthPurchased}
+                    {formatDate(row.monthPurchased)}
                   </TableCell>
                   <TableCell align="right" className="border">
-                    {row.usefulLife}
+                    {row.usefulLife} year(s)
                   </TableCell>
                   <TableCell align="right" className="border">
-                    {row.monthlyDepreciationExpense}
+                    {formatPositive(row.monthlyDepreciationExpense)}
                   </TableCell>
                   <TableCell align="right" className="border">
-                    {row.accumulatedDepreciation}
+                    {formatNegative(row.accumulatedDepreciation)}
                   </TableCell>
                 </TableRow>
               ))
