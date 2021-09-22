@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { getMe} from "../../utils/API";
 import Auth from "../../utils/auth";
+import {formatPositive} from '../../utils/formatMoney'
 
 function Dashboard() {
     const [userData, setUserData] = useState({});
@@ -39,7 +40,7 @@ function Dashboard() {
         
         assets.map((row) => (sum += row.monthlyDepreciationExpense))
 
-        return sum;
+        return formatPositive(sum);
     }
 
     return (
@@ -48,7 +49,7 @@ function Dashboard() {
             <h2>
                 {userData.assets ?
                     totalMonthlyDep(userData)
-                    : 0
+                    : formatPositive(0)
                 }
             </h2>
         </div>
