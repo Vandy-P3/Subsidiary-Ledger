@@ -15,7 +15,7 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={"/"}>
+            <Link className="navbar-brand" to={"/homepage"}>
               Depreciation Ledger
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -59,8 +59,9 @@ function App() {
         <div className="outer">
           <div className="inner">
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/" component={SignUp} />
               <Route path="/sign-in" component={Login} />
+              <Route path="/homepage" component={HomePage} />
               <Route path="/sign-up" component={SignUp} />
               <Route path="/addAsset" component={AssetForm} />
               <Route path="/dashboard" component={Dashboard} />
