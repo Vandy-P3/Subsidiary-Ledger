@@ -1,0 +1,7 @@
+@media all and (min-width: 480px) {
+  .Form {
+    margin: 0 auto;
+    max-width: 60vh;
+    background-color: rgb(223, 223, 223);
+  }
+}
