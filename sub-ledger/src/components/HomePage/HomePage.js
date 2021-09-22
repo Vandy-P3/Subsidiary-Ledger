@@ -52,7 +52,7 @@ export default function BasicTable() {
         <TableHead>
           <TableRow>
             <TableCell>Assets</TableCell>
-            <TableCell align="right">Book Value</TableCell>
+            <TableCell align="right">Purchase Price</TableCell>
             <TableCell align="right">Month Purchased</TableCell>
             <TableCell align="right">Useful Life</TableCell>
             <TableCell align="right">Monthly Depreciation Expense</TableCell>
