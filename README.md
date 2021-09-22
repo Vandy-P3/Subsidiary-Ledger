@@ -20,7 +20,8 @@ Github repository: https://github.com/Vandy-P3/subsidiary-ledger/
 
 ## Usage
 
-Create an account, use the "Add Asset" button to add an asset and let our app do the calculations! The assets are kept up with by users, and all users are authenicated in our database.
+Create an account, use the "Add Asset" button to add an asset and let our app do the calculations! The assets are kept up with by users, and all users are authenicated in our database. You can find your current monthly depreciation
+expense in the "Dashboard" tab on the navbar section, only after youve logged in. If no prior assets are recorded in the app, this will automatically display "0".
 
 ## Credits
 
