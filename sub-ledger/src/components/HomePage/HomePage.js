@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { getMe, deleteAsset } from "../../utils/API";
+import { getMe } from "../../utils/API";
 import Auth from "../../utils/auth";
-import { removeAssetId } from "../../utils/localStorage";
 import formatDate from "../../utils/formatDate";
 import {formatPositive, formatNegative} from '../../utils/formatMoney'
 import Table from '@mui/material/Table';

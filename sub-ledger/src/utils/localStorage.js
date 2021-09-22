@@ -14,18 +14,3 @@ export const saveAssetIds = (assetIdArr) => {
     }
 };
   
-export const removeAssetId = (assetId) => {
-    const savedAssetIds = localStorage.getItem('saved_assets')
-      ? JSON.parse(localStorage.getItem('saved_assets'))
-      : null;
-  
-    if (!savedAssetIds) {
-      return false;
-    }
-  
-    const updatedSavedAssetIds = savedAssetIds?.filter((savedBookId) => savedBookId !== assetId);
-    localStorage.setItem('saved_assets', JSON.stringify(updatedSavedAssetIds));
-  
-    return true;
-};
-  
